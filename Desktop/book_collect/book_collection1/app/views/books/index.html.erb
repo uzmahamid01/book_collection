@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Collection App - Home</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <%= link_to "books#index" do %>
+        <%= image_tag 'book.png', alt: 'Logo' %>
+      <% end %>
+    </div>
+    <nav>
+      <ul>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Add Book', new_book_path %></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <% flash.each do |type, message| %>
+      <div class="flash <%= type %>"><%= message %></div>
+    <% end %>
+
+    <h1>Welcome to the Book Collection App</h1>
+    <%= link_to 'Add Book to the Collection', new_book_path, class: 'btn btn-custom' %>
+    <h2>Book Collection Database</h2>
+
+    <div class="book-grid">
+      <% @books.each do |book| %>
+        <div class="book-item">
+          <h2><%= book.title %></h2>
+          <p><strong>Author:</strong> <%= book.author %></p>
+          <p><strong>Price:</strong> $<%= book.price %></p>
+          <p><strong>Published Date:</strong>
+            <%= book.published_date.present? ? book.published_date.strftime('%B %d, %Y') : 'N/A' %>
+          </p>
+          <%= link_to 'Show', book_path(book), class: 'btn btn-primary' %>
+          <%= link_to 'Edit', edit_book_path(book), class: 'btn btn-secondary' %>
+          <%= link_to 'Delete', delete_book_path(book), class: 'btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
+
+
+
+  </main>
+
+  <footer>
+    <p>Copyrights @Uzma Hamid 2024</p>
+  </footer>
+</body>
+</html>

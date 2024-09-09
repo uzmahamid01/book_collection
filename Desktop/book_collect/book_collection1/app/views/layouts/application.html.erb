@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Collection App</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <%= javascript_include_tag 'application', 'data-turbo-track': 'reload' %>
+  <%= yield %>
+  <!-- Add this HTML at the end of the body in your layout file -->
+  <!-- Modal Structure -->
+  <!-- Modal Structure -->
+  <div id="confirmationModal" class="modal">
+    <div class="modal-content">
+      <h4>Confirm Deletion</h4>
+      <p>Are you sure you want to delete this book?</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#" id="cancelModal" class="modal-close btn">Cancel</a>
+      <a href="#" id="confirmDelete" class="btn">OK</a>
+    </div>
+  </div>
+
+
+</body>
+</html>

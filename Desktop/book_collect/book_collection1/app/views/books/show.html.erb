@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book Collection App - Book Details</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbo-track': 'reload' %>
+  <%= javascript_importmap_tags %>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <%= link_to "books#index" do %>
+        <%= image_tag 'book.png', alt: 'Logo' %>
+      <% end %>
+    </div>
+    <nav>
+      <ul>
+        <li><%= link_to 'Home', books_path %></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h1>Book Details</h1>
+
+    <p>
+      <strong>Title:</strong>
+      <%= @book.title %>
+    </p>
+
+    <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-secondary' %>
+    <%= link_to 'Back to List', books_path, class: 'btn btn-info'%>
+
+  </main>
+
+  <footer>
+    <p>Copyrights @Uzma Hamid 2024</p>
+  </footer>
+</body>
+</html>
